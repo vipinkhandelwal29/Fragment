@@ -1,35 +1,39 @@
 package com.example.version02
 
-import android.view.View
+import com.example.version02.adapter.PagerAdapter
 import com.example.version02.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId() = R.layout.activity_main
 
+
     override fun initControl() {
-        binding.l2.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.myLayout, FragmentOne())
-                .commit()
+        val mainScreen = PagerAdapter(supportFragmentManager)
+        binding.viewPager.adapter = mainScreen
+
+        binding.selected = 1
+        binding.llPhoto.setOnClickListener {
+            binding.viewPager.currentItem = 0
+            binding.selected = 1
 
         }
-        binding.l3.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.myLayout, FragmentTwo())
-                .commit()
+        binding.selected = 2
+        binding.llMemory.setOnClickListener {
+            binding.viewPager.currentItem = 1
+            binding.selected = 2
 
         }
-        binding.l4.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.myLayout, FragmentThree())
-                .commit()
+
+        binding.selected = 3
+        binding.llAlbum.setOnClickListener {
+            binding.viewPager.currentItem = 2
+            binding.selected = 3
 
         }
+
 
     }
-
-    override fun onClick(v: View?) {
-
-    }
-
     /*val textView = findViewById<TextView>(R.id.textView)
     val photo = findViewById<LinearLayout>(R.id.l2)
     val memory = findViewById<LinearLayout>(R.id.l3)

@@ -7,10 +7,9 @@ class FragmentThree : BaseFragment<FragmentThreeBinding>() {
     override fun getLayoutId() = R.layout.fragment_three
 
     override fun initControl() {
-        binding.textViewThree.text=getString(R.string.fragment_three)
+        binding.textViewThree.text = getString(R.string.fragment_three)
         binding.button3.setOnClickListener {
-            val toast = Toast.makeText(context,"FragmentThree", Toast.LENGTH_SHORT)
-            toast.show()
+           Toast.makeText(context, "FragmentThree", Toast.LENGTH_SHORT).show()
         }
     }
 }

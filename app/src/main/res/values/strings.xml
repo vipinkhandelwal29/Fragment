@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Version0.2</string>
+    <string name="app_name">Fragment + Pager</string>
     <string name="good">Good Morning</string>
-   
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="photo">Photo</string>
     <string name="memory">Memory</string>

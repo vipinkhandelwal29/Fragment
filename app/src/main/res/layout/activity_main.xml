@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="selected"
+            type="int" />
 
     </data>
 
@@ -12,87 +15,68 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:id="@+id/myLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/l1">
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/l1"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="70dp"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/llPhoto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                app:fontFamily="@font/baloo_bhaina" />
-
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
         <LinearLayout
-            android:id="@+id/l2"
+            android:id="@+id/llPhoto"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/l3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/l1">
+            app:layout_constraintEnd_toStartOf="@+id/llMemory"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@{selected==1?@color/purple_700:@color/black}"
                 android:id="@+id/photo"
-                android:src="@drawable/ic_baseline_photo_24">
+                android:background="@drawable/ic_baseline_photo_24" />
 
-            </androidx.appcompat.widget.AppCompatImageView>
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/photo"
+                android:textColor="@{selected==1?@color/purple_700:@color/black}"
                 android:id="@+id/photoTv"
-                android:textColor="@color/black"
                 android:textStyle="bold">
 
             </androidx.appcompat.widget.AppCompatTextView>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/l3"
+            android:id="@+id/llMemory"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/l4"
-            app:layout_constraintStart_toEndOf="@+id/l2"
-            app:layout_constraintTop_toBottomOf="@+id/l1">
+            app:layout_constraintEnd_toStartOf="@+id/llAlbum"
+            app:layout_constraintStart_toEndOf="@+id/llPhoto"
+            app:layout_constraintTop_toTopOf="@+id/llPhoto">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/memory"
-                android:src="@drawable/ic_baseline_memory_24">
+                android:backgroundTint="@{selected==2?@color/purple_700:@color/black}"
+                android:background="@drawable/ic_baseline_memory_24">
 
             </androidx.appcompat.widget.AppCompatImageView>
 
@@ -101,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/memoryTv"
                 android:text="@string/memory"
-                android:textColor="@color/black"
+                android:textColor="@{selected==2?@color/purple_700:@color/black}"
                 android:textStyle="bold">
 
             </androidx.appcompat.widget.AppCompatTextView>
@@ -110,7 +94,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/l4"
+            android:id="@+id/llAlbum"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="1dp"
@@ -119,29 +103,29 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/l3"
-            app:layout_constraintTop_toBottomOf="@+id/l1"
+            app:layout_constraintStart_toEndOf="@+id/llMemory"
+            app:layout_constraintTop_toTopOf="@id/llPhoto"
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/album"
+                android:id="@+id/ivAlbum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_photo_album_24">
+                android:backgroundTint="@{selected==3?@color/purple_700:@color/black}"
+                android:background="@drawable/ic_baseline_photo_album_24">
 
             </androidx.appcompat.widget.AppCompatImageView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/albumTv"
+                android:id="@+id/tvAlbum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@{selected==3?@color/purple_700:@color/black}"
                 android:text="@string/album"
-                android:textColor="@color/black"
                 android:textStyle="bold">
 
             </androidx.appcompat.widget.AppCompatTextView>
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
